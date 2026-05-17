@@ -18,3 +18,26 @@ docker run -d \
   -v sonarqube_extensions:/opt/sonarqube/extensions \
   -v sonarqube_logs:/opt/sonarqube/logs \
   sonarqube:lts-community
+
+
+
+
+
+
+
+
+u1@server1:~$ docker run -d \
+  --name jenkins \
+  -p 8080:8080 -p 50000:50000 \
+  -v jenkins_home:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  jenkins/jenkins:lts
+
+c7a0776b3e26588a5ff8b72cde2dcc051c7d3efb8dc61f5144318d7196593f7a
+docker: Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint jenkins (98166c0d1b857da03e37eb14a9e941a89ea326938bfec2e8f0daecd016dca538): failed to bind host port 0.0.0.0:8080/tcp: address already in use
+
+Run 'docker run --help' for more information
+u1@server1:~$ 
+
+
+
