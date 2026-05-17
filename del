@@ -1,21 +1,28 @@
-u1@server1:~$ docker exec -it jenkins bash
-jenkins@a5a734a0ca42:/$ ls -l /var/jenkins_home/.ssh/
-total 12
--rw------- 1 jenkins jenkins 3243 May 17 16:26 id_rsa
--rw-r--r-- 1 jenkins jenkins  746 May 17 16:26 id_rsa.pub
--rw-r--r-- 1 jenkins jenkins 1158 May 17 16:23 known_hosts
-jenkins@a5a734a0ca42:/$ cat /var/jenkins_home/.ssh/id_rsa.pub
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDI9cw/Ng8A+H1yg8+PtZgfztNBiQe4Z4NQx+hf/jcPRpNyVEHjqXMhQr4NWcTwlk3QTVb/Q4ZSyeeWJp/hkI/Unrmja1KHoOTYwlbNB1fk+8tQt9UARL+bklR/AlgnCB1t9Y5wjnmjMlwT4en08/sB19aqDF5SB8bwO33icUE8Q+f9r79TwzQH8fDopGj1eeyCFNTXNAiSXdiiLL8009TZJqc2sb7GNVVi54fOV7p1hkrb+HecCNzmgeC/CaL54fugrSlKw9PH8Kp9tphD8VeYVkrBtxZg9thZaFdknpGryow8gWvLhJo6bNY6P6sFYSYcRZe4zZbUJhZSheverm6oQlZkn+1bIXFLPTeYllik3tfucOJFZ03sHaA3A2hu6D3auSRa+Lv/UeAXIfnPmclmTKMMPrDV/QS8fqYUvT4fMX9K2AMNys/G2o7McpPejnzLhpNXDjE1i8RAoubdZB2jkzqi6BQTmKtXjKNIC+rcKwrw5kbjqhvENEOLn6+U6KBSzGnW/rJpwkLnOxb23i+XWV57A+eWVMAJYZUMnV8oEWJeuHB86Ja0nXscqZOcZXLAeiAKmi5Ouj9FWJktm8g6RTNYyY60PuNS7VOExKLljADXmcMOd4lypr9Dx1A+E/HugblvJnjQGqLaIocLbOH7dNHLFtQoIDWqHyHTHXO1SQ== jenkins@a5a734a0ca42
-jenkins@a5a734a0ca42:/$ nano /home/jenkins/.ssh/authorized_keys
-bash: nano: command not found
-jenkins@a5a734a0ca42:/$ exit
-exit
-u1@server1:~$ nano /home/jenkins/.ssh/authorized_keys
-u1@server1:~$ sudo nano /home/jenkins/.ssh/authorized_keys
-u1@server1:~$ sudo nano /home/jenkins/.ssh/authorized_keys
-u1@server1:~$ sudo nano /home/jenkins/.ssh/authorized_keys
-u1@server1:~$ chmod 700 /home/jenkins/.ssh
-chmod: changing permissions of '/home/jenkins/.ssh': Operation not permitted
-u1@server1:~$ chmod 700 /home/jenkins/.ssh
-chmod: changing permissions of '/home/jenkins/.ssh': Operation not permitted
-u1@server1:~$ 
+Warning: no key algorithms provided; JENKINS-42959 disabled
+SSHLauncher{host='192.168.148.131', port=22, credentialsId='ssh-jenkins', jvmOptions='', javaPath='', prefixStartSlaveCmd='', suffixStartSlaveCmd='', launchTimeoutSeconds=60, maxNumRetries=10, retryWaitTime=15, sshHostKeyVerificationStrategy=hudson.plugins.sshslaves.verifiers.KnownHostsFileKeyVerificationStrategy, tcpNoDelay=true, trackCredentials=true}
+[05/17/26 16:42:23] [SSH] Opening SSH connection to 192.168.148.131:22.
+Searching for 192.168.148.131 in /var/jenkins_home/.ssh/known_hosts
+Searching for 192.168.148.131:22 in /var/jenkins_home/.ssh/known_hosts
+[05/17/26 16:42:24] [SSH] SSH host key matches key in Known Hosts file. Connection will be allowed.
+ERROR: Server rejected the 1 private key(s) for jenkins-user (credentialId:ssh-jenkins/method:publickey)
+ERROR: Failed to authenticate as jenkins-user with credential=ssh-jenkins
+java.io.IOException: Publickey authentication failed.
+	at PluginClassLoader for trilead-api//com.trilead.ssh2.auth.AuthenticationManager.authenticatePublicKey(AuthenticationManager.java:362)
+	at PluginClassLoader for trilead-api//com.trilead.ssh2.Connection.authenticateWithPublicKey(Connection.java:474)
+	at PluginClassLoader for ssh-credentials//com.cloudbees.jenkins.plugins.sshcredentials.impl.TrileadSSHPublicKeyAuthenticator.doAuthenticate(TrileadSSHPublicKeyAuthenticator.java:110)
+	at PluginClassLoader for ssh-credentials//com.cloudbees.jenkins.plugins.sshcredentials.SSHAuthenticator.authenticate(SSHAuthenticator.java:431)
+	at PluginClassLoader for ssh-credentials//com.cloudbees.jenkins.plugins.sshcredentials.SSHAuthenticator.authenticate(SSHAuthenticator.java:468)
+	at PluginClassLoader for ssh-slaves//hudson.plugins.sshslaves.SSHLauncher.openConnection(SSHLauncher.java:890)
+	at PluginClassLoader for ssh-slaves//hudson.plugins.sshslaves.SSHLauncher.lambda$launch$0(SSHLauncher.java:446)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.io.IOException: PEM problem: it is of unknown type. Supported algorithms are :[ssh-ed25519, ecdsa-sha2-nistp521, ecdsa-sha2-nistp384, ecdsa-sha2-nistp256, rsa-sha2-256, rsa-sha2-512, ssh-rsa, ssh-dss]
+	at PluginClassLoader for trilead-api//com.trilead.ssh2.crypto.PEMDecoder.decodeKeyPair(PEMDecoder.java:482)
+	at PluginClassLoader for trilead-api//com.trilead.ssh2.auth.AuthenticationManager.authenticatePublicKey(AuthenticationManager.java:303)
+	... 10 more
+[05/17/26 16:42:24] [SSH] Authentication failed.
+Authentication failed.
+[05/17/26 16:42:24] Launch failed - cleaning up connection
+[05/17/26 16:42:24] [SSH] Connection closed.
