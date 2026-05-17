@@ -1,16 +1,82 @@
-u1@server1:~$ sudo systemctl status docker --no-pager
-× docker.service - Docker Application Container Engine
-     Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; preset: enabled)
-     Active: failed (Result: exit-code) since Sun 2026-05-17 18:25:13 EEST; 2min 50s ago
-   Duration: 42.406s
-TriggeredBy: × docker.socket
-       Docs: https://docs.docker.com
-    Process: 26523 ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock (code=exited, status=1/FAILURE)
-   Main PID: 26523 (code=exited, status=1/FAILURE)
-        CPU: 29ms
-
+u1@server1:~$ sudo journalctl -xeu docker.service --no-pager | tail -80
+░░ Support: http://www.ubuntu.com/support
+░░ 
+░░ An ExecStart= process belonging to unit docker.service has exited.
+░░ 
+░░ The process' exit code is 'exited' and its exit status is 1.
+May 17 18:25:09 server1 systemd[1]: docker.service: Failed with result 'exit-code'.
+░░ Subject: Unit failed
+░░ Defined-By: systemd
+░░ Support: http://www.ubuntu.com/support
+░░ 
+░░ The unit docker.service has entered the 'failed' state with result 'exit-code'.
+May 17 18:25:09 server1 systemd[1]: Failed to start docker.service - Docker Application Container Engine.
+░░ Subject: A start job for unit docker.service has failed
+░░ Defined-By: systemd
+░░ Support: http://www.ubuntu.com/support
+░░ 
+░░ A start job for unit docker.service has finished with a failure.
+░░ 
+░░ The job identifier is 6864 and the job result is failed.
+May 17 18:25:11 server1 systemd[1]: docker.service: Scheduled restart job, restart counter is at 2.
+░░ Subject: Automatic restarting of a unit has been scheduled
+░░ Defined-By: systemd
+░░ Support: http://www.ubuntu.com/support
+░░ 
+░░ Automatic restarting of the unit docker.service has been scheduled, as the result for
+░░ the configured Restart= setting for the unit.
+May 17 18:25:11 server1 systemd[1]: Starting docker.service - Docker Application Container Engine...
+░░ Subject: A start job for unit docker.service has begun execution
+░░ Defined-By: systemd
+░░ Support: http://www.ubuntu.com/support
+░░ 
+░░ A start job for unit docker.service has begun execution.
+░░ 
+░░ The job identifier is 6951.
+May 17 18:25:11 server1 dockerd[26523]: time="2026-05-17T18:25:11.340170798+03:00" level=info msg="Starting up"
+May 17 18:25:11 server1 dockerd[26523]: failed to load listeners: no sockets found via socket activation: make sure the service was started by systemd
+May 17 18:25:11 server1 systemd[1]: docker.service: Main process exited, code=exited, status=1/FAILURE
+░░ Subject: Unit process exited
+░░ Defined-By: systemd
+░░ Support: http://www.ubuntu.com/support
+░░ 
+░░ An ExecStart= process belonging to unit docker.service has exited.
+░░ 
+░░ The process' exit code is 'exited' and its exit status is 1.
+May 17 18:25:11 server1 systemd[1]: docker.service: Failed with result 'exit-code'.
+░░ Subject: Unit failed
+░░ Defined-By: systemd
+░░ Support: http://www.ubuntu.com/support
+░░ 
+░░ The unit docker.service has entered the 'failed' state with result 'exit-code'.
+May 17 18:25:11 server1 systemd[1]: Failed to start docker.service - Docker Application Container Engine.
+░░ Subject: A start job for unit docker.service has failed
+░░ Defined-By: systemd
+░░ Support: http://www.ubuntu.com/support
+░░ 
+░░ A start job for unit docker.service has finished with a failure.
+░░ 
+░░ The job identifier is 6951 and the job result is failed.
 May 17 18:25:13 server1 systemd[1]: docker.service: Scheduled restart job, restart counter is at 3.
+░░ Subject: Automatic restarting of a unit has been scheduled
+░░ Defined-By: systemd
+░░ Support: http://www.ubuntu.com/support
+░░ 
+░░ Automatic restarting of the unit docker.service has been scheduled, as the result for
+░░ the configured Restart= setting for the unit.
 May 17 18:25:13 server1 systemd[1]: docker.service: Start request repeated too quickly.
 May 17 18:25:13 server1 systemd[1]: docker.service: Failed with result 'exit-code'.
+░░ Subject: Unit failed
+░░ Defined-By: systemd
+░░ Support: http://www.ubuntu.com/support
+░░ 
+░░ The unit docker.service has entered the 'failed' state with result 'exit-code'.
 May 17 18:25:13 server1 systemd[1]: Failed to start docker.service - Docker Application Container Engine.
+░░ Subject: A start job for unit docker.service has failed
+░░ Defined-By: systemd
+░░ Support: http://www.ubuntu.com/support
+░░ 
+░░ A start job for unit docker.service has finished with a failure.
+░░ 
+░░ The job identifier is 7038 and the job result is failed.
 u1@server1:~$ 
