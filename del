@@ -56,3 +56,25 @@ The key's randomart image is:
 |   + .*+.        |
 |    o+E+=o       |
 +----[SHA256]-----+
+
+
+
+
+
+
+
+
+
+
+
+
+
+u1@server1:~$ nano /home/jenkins/.ssh/authorized_keys
+u1@server1:~$ nano /home/jenkins/.ssh/authorized_keys
+u1@server1:~$ touch /home/jenkins/.ssh/authorized_keys
+touch: cannot touch '/home/jenkins/.ssh/authorized_keys': No such file or directory
+u1@server1:~$ sudo touch /home/jenkins/.ssh/authorized_keys
+[sudo] password for u1: 
+touch: cannot touch '/home/jenkins/.ssh/authorized_keys': No such file or directory
+u1@server1:~$ 
+
