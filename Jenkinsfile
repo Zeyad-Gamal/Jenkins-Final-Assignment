@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+        environment {
+        DOCKERHUB_USER = 'zeyadgamal'
+        IMAGE_TAG = "${DOCKERHUB_USER}/service-app:${BUILD_NUMBER}"
+    }
+
     stages {
 
         stage('Checkout') {
@@ -27,6 +32,12 @@ pipeline {
         }
     }
 }
+
+        stage('Build Docker Image') {
+            steps {
+                sh "docker build -t ${IMAGE_TAG} ."
+            }
+        }
 
         stage('Run Unit Tests') {
             steps {
