@@ -1,0 +1,217 @@
+Started by GitHub push by Zeyad-Gamal
+Obtained Jenkinsfile from git https://github.com/Zeyad-Gamal/Jenkins-Final-Assignment
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/php-ci-lab
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-creds
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/php-ci-lab/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Zeyad-Gamal/Jenkins-Final-Assignment # timeout=10
+Fetching upstream changes from https://github.com/Zeyad-Gamal/Jenkins-Final-Assignment
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/Zeyad-Gamal/Jenkins-Final-Assignment +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 1896384c2fd4afa6e9b3bac69bc2b177e6660bb1 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 1896384c2fd4afa6e9b3bac69bc2b177e6660bb1 # timeout=10
+Commit message: "Update OrderProcessor.php"
+ > git rev-list --no-walk f6808d8f0556002939e7c50a32b66d4bc770434a # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-creds
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/php-ci-lab/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Zeyad-Gamal/Jenkins-Final-Assignment.git # timeout=10
+Fetching upstream changes from https://github.com/Zeyad-Gamal/Jenkins-Final-Assignment.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/Zeyad-Gamal/Jenkins-Final-Assignment.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse origin/main^{commit} # timeout=10
+Checking out Revision 1896384c2fd4afa6e9b3bac69bc2b177e6660bb1 (origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 1896384c2fd4afa6e9b3bac69bc2b177e6660bb1 # timeout=10
+Commit message: "Update OrderProcessor.php"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube Analysis)
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: SonarQube-Server
+[Pipeline] {
+[Pipeline] tool
+[Pipeline] sh
++ /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarScanner/bin/sonar-scanner -Dsonar.projectKey=service-app -Dsonar.sources=./src -Dsonar.host.url=http://sonarqube:9000
+10:48:24.830 INFO  Scanner configuration file: /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarScanner/conf/sonar-scanner.properties
+10:48:24.832 INFO  Project root configuration file: NONE
+10:48:24.844 INFO  SonarScanner CLI 8.1.0.6389
+10:48:24.847 INFO  Linux 6.17.0-19-generic amd64
+10:48:26.377 INFO  Communicating with SonarQube Server 9.9.8.100196
+10:48:26.591 INFO  Load global settings
+10:48:26.632 INFO  Load global settings (done) | time=42ms
+10:48:26.633 INFO  Server id: 147B411E-AZ41RRPaELuCe0cZxrWQ
+10:48:26.635 INFO  User cache: /var/jenkins_home/.sonar/cache
+10:48:26.638 INFO  Load/download plugins
+10:48:26.638 INFO  Load plugins index
+10:48:26.656 INFO  Load plugins index (done) | time=18ms
+10:48:26.680 INFO  Load/download plugins (done) | time=42ms
+10:48:26.884 INFO  Process project properties
+10:48:26.889 INFO  Process project properties (done) | time=5ms
+10:48:26.891 INFO  Execute project builders
+10:48:26.891 INFO  Execute project builders (done) | time=0ms
+10:48:26.894 INFO  Project key: service-app
+10:48:26.894 INFO  Base dir: /var/jenkins_home/workspace/php-ci-lab
+10:48:26.894 INFO  Working dir: /var/jenkins_home/workspace/php-ci-lab/.scannerwork
+10:48:26.898 INFO  Load project settings for component key: 'service-app'
+10:48:26.906 INFO  Load project settings for component key: 'service-app' (done) | time=8ms
+10:48:26.957 INFO  Auto-configuring with CI 'Jenkins'
+10:48:26.958 INFO  Load quality profiles
+10:48:26.979 INFO  Load quality profiles (done) | time=21ms
+10:48:26.987 INFO  Load active rules
+10:48:27.657 INFO  Load active rules (done) | time=670ms
+10:48:27.660 INFO  Load analysis cache
+10:48:27.668 INFO  Load analysis cache (1.1 kB) | time=8ms
+10:48:27.694 INFO  Load project repositories
+10:48:27.702 INFO  Load project repositories (done) | time=8ms
+10:48:27.718 INFO  Indexing files...
+10:48:27.719 INFO  Project configuration:
+10:48:27.776 INFO  2 files indexed
+10:48:27.776 INFO  0 files ignored because of scm ignore settings
+10:48:27.777 INFO  Quality profile for php: Sonar way
+10:48:27.777 INFO  ------------- Run sensors on module service-app
+10:48:27.816 INFO  Load metrics repository
+10:48:27.828 INFO  Load metrics repository (done) | time=12ms
+10:48:28.421 INFO  Sensor JaCoCo XML Report Importer [jacoco]
+10:48:28.422 INFO  'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+10:48:28.422 INFO  No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+10:48:28.422 INFO  Sensor JaCoCo XML Report Importer [jacoco] (done) | time=1ms
+10:48:28.422 INFO  Sensor CSS Rules [javascript]
+10:48:29.143 WARN  Error when running: 'node -v'. Is Node.js available during analysis?
+10:48:29.144 INFO  Hit the cache for 0 out of 0
+10:48:29.144 INFO  Miss the cache for 0 out of 0
+10:48:29.144 INFO  Sensor CSS Rules [javascript] (done) | time=722ms
+10:48:29.144 INFO  Sensor C# Project Type Information [csharp]
+10:48:29.145 INFO  Sensor C# Project Type Information [csharp] (done) | time=1ms
+10:48:29.145 INFO  Sensor C# Analysis Log [csharp]
+10:48:29.150 INFO  Sensor C# Analysis Log [csharp] (done) | time=5ms
+10:48:29.150 INFO  Sensor C# Properties [csharp]
+10:48:29.150 INFO  Sensor C# Properties [csharp] (done) | time=0ms
+10:48:29.150 INFO  Sensor HTML [web]
+10:48:29.156 INFO  Sensor HTML [web] (done) | time=6ms
+10:48:29.156 INFO  Sensor PHP sensor [php]
+10:48:29.166 INFO  Starting PHP symbol indexer
+10:48:29.168 INFO  2 source files to be analyzed
+10:48:29.194 INFO  2/2 source files have been analyzed
+10:48:29.195 INFO  Cached information of global symbols will be used for 0 out of 2 files. Global symbols were recomputed for the remaining files.
+10:48:29.204 INFO  Starting PHP rules
+10:48:29.204 INFO  2 source files to be analyzed
+10:48:29.272 INFO  2/2 source files have been analyzed
+10:48:29.272 INFO  The PHP analyzer was able to leverage cached data from previous analyses for 0 out of 2 files. These files were not parsed.
+10:48:29.274 INFO  No PHPUnit tests reports provided (see 'sonar.php.tests.reportPath' property)
+10:48:29.274 INFO  No PHPUnit coverage reports provided (see 'sonar.php.coverage.reportPaths' property)
+10:48:29.274 INFO  Sensor PHP sensor [php] (done) | time=118ms
+10:48:29.274 INFO  Sensor Analyzer for "php.ini" files [php]
+10:48:29.276 INFO  Sensor Analyzer for "php.ini" files [php] (done) | time=2ms
+10:48:29.276 INFO  Sensor TextAndSecretsSensor [text]
+10:48:29.280 INFO  2 source files to be analyzed
+10:48:29.282 INFO  2/2 source files have been analyzed
+10:48:29.283 INFO  Sensor TextAndSecretsSensor [text] (done) | time=7ms
+10:48:29.283 INFO  Sensor VB.NET Project Type Information [vbnet]
+10:48:29.283 INFO  Sensor VB.NET Project Type Information [vbnet] (done) | time=0ms
+10:48:29.283 INFO  Sensor VB.NET Analysis Log [vbnet]
+10:48:29.289 INFO  Sensor VB.NET Analysis Log [vbnet] (done) | time=6ms
+10:48:29.289 INFO  Sensor VB.NET Properties [vbnet]
+10:48:29.289 INFO  Sensor VB.NET Properties [vbnet] (done) | time=0ms
+10:48:29.289 INFO  Sensor IaC Docker Sensor [iac]
+10:48:29.290 INFO  0 source files to be analyzed
+10:48:29.313 INFO  0/0 source files have been analyzed
+10:48:29.313 INFO  Sensor IaC Docker Sensor [iac] (done) | time=24ms
+10:48:29.315 INFO  ------------- Run sensors on project
+10:48:29.339 INFO  Sensor Analysis Warnings import [csharp]
+10:48:29.339 INFO  Sensor Analysis Warnings import [csharp] (done) | time=0ms
+10:48:29.339 INFO  Sensor Zero Coverage Sensor
+10:48:29.344 INFO  Sensor Zero Coverage Sensor (done) | time=5ms
+10:48:29.348 INFO  SCM Publisher SCM provider for this project is: git
+10:48:29.349 INFO  SCM Publisher 1 source file to be analyzed
+10:48:29.388 INFO  SCM Publisher 1/1 source file have been analyzed (done) | time=39ms
+10:48:29.390 INFO  CPD Executor 1 file had no CPD blocks
+10:48:29.390 INFO  CPD Executor Calculating CPD for 1 file
+10:48:29.393 INFO  CPD Executor CPD calculation finished (done) | time=3ms
+10:48:29.419 INFO  Analysis report generated in 24ms, dir size=126.7 kB
+10:48:29.427 INFO  Analysis report compressed in 8ms, zip size=20.1 kB
+10:48:29.440 INFO  Analysis report uploaded in 12ms
+10:48:29.441 INFO  ANALYSIS SUCCESSFUL, you can find the results at: http://sonarqube:9000/dashboard?id=service-app
+10:48:29.441 INFO  Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+10:48:29.441 INFO  More about the report processing at http://sonarqube:9000/api/ce/task?id=AZ41jT35ELuCe0cZx1Pw
+10:48:29.686 INFO  Analysis total time: 2.966 s
+10:48:29.687 INFO  EXECUTION SUCCESS
+10:48:29.688 INFO  Total time: 4.878s
+[Pipeline] }
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run Unit Tests)
+[Pipeline] catchError
+[Pipeline] {
+[Pipeline] sh
++ /usr/local/bin/phpunit --log-junit results.xml tests/
+PHP Fatal error:  Uncaught ParseError: syntax error, unexpected token "<", expecting end of file in /var/jenkins_home/workspace/php-ci-lab/src/OrderProcessor.php:22
+Stack trace:
+#0 phar:///usr/local/bin/phpunit/phpunit/Util/FileLoader.php(57): include_once()
+#1 phar:///usr/local/bin/phpunit/phpunit/Util/FileLoader.php(43): PHPUnit\Util\FileLoader::load()
+#2 phar:///usr/local/bin/phpunit/phpunit/Framework/TestSuite.php(309): PHPUnit\Util\FileLoader::checkAndLoad()
+#3 phar:///usr/local/bin/phpunit/phpunit/Framework/TestSuite.php(397): PHPUnit\Framework\TestSuite->addTestFile()
+#4 phar:///usr/local/bin/phpunit/phpunit/Runner/BaseTestRunner.php(85): PHPUnit\Framework\TestSuite->addTestFiles()
+#5 phar:///usr/local/bin/phpunit/phpunit/TextUI/Command.php(111): PHPUnit\Runner\BaseTestRunner->getTest()
+#6 phar:///usr/local/bin/phpunit/phpunit/TextUI/Command.php(96): PHPUnit\TextUI\Command->run()
+#7 /usr/local/bin/phpunit(2552): PHPUnit\TextUI\Command::main()
+#8 {main}
+
+Next PHPUnit\TextUI\RuntimeException: syntax error, unexpected token "<", expecting end of file in phar:///usr/local/bin/phpunit/phpunit/TextUI/Command.php:98
+Stack trace:
+#0 /usr/local/bin/phpunit(2552): PHPUnit\TextUI\Command::main()
+#1 {main}
+  thrown in phar:///usr/local/bin/phpunit/phpunit/TextUI/Command.php on line 98
+[Pipeline] }
+ERROR: script returned exit code 255
+[Pipeline] // catchError
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Display Results)
+[Pipeline] junit
+Recording test results
+[Checks API] No suitable checks publisher found.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+Pipeline job finished.
+[Pipeline] echo
+Congratulations! All tests passed successfully.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+
