@@ -1,51 +1,10 @@
-u1@server1:~$ ls /etc/apt/sources.list.d/
-ansible-ubuntu-ansible-noble.sources  grafana.list    kubernetes.list        ubuntu.sources              vscode.sources
-docker.sources                        hashicorp.list  openziti-release.list  ubuntu.sources.curtin.orig
-u1@server1:~$ sudo rm -f /etc/apt/sources.list.d/*debian*
-u1@server1:~$ grep -r "debian" /etc/apt/
-/etc/apt/sources.list.d/openziti-release.list:deb [signed-by=/usr/share/keyrings/openziti.gpg] https://packages.openziti.org/zitipax-openziti-deb-stable debian main
-/etc/apt/sources.list:deb https://deb.debian.org/debian trixie main contrib non-free
-/etc/apt/sources.list:deb https://deb.debian.org/debian trixie-updates main contrib non-free
-/etc/apt/sources.list:deb https://deb.debian.org/debian-security trixie-security main contrib non-free
-/etc/apt/apt.conf.d/20dbus:APT::Update::Post-Invoke-Success { "[ ! -f /var/run/dbus/system_bus_socket ] || /usr/bin/dbus-send --system --dest=org.debian.apt --type=signal /org/debian/apt org.debian.apt.CacheChanged || true"; };
-u1@server1:~$ sudo apt clean
+  GNU nano 7.2                                           /etc/apt/sources.list                                                     
+deb https://deb.debian.org/debian trixie main contrib non-free
+deb https://deb.debian.org/debian trixie-updates main contrib non-free
+deb https://deb.debian.org/debian-security trixie-security main contrib non-free
 
-su
-sudo apt updu1@server1:~$ date --allow-insecure-repositories
-date: unrecognized option '--allow-insecure-repositories'
-Try 'date --help' for more information.
-u1@server1:~$ sudo apt update
-Hit:1 https://download.docker.com/linux/ubuntu noble InRelease
-Hit:2 https://apt.releases.hashicorp.com noble InRelease                                                                          
-Hit:3 https://apt.grafana.com stable InRelease                                                                                    
-Hit:5 https://packages.microsoft.com/repos/code stable InRelease                                                                  
-Hit:6 https://ppa.launchpadcontent.net/ansible/ansible/ubuntu noble InRelease                                                     
-Get:7 https://deb.debian.org/debian trixie InRelease [140 kB]                                                                     
-Hit:8 https://security.ubuntu.com/ubuntu noble-security InRelease                                                                 
-Hit:4 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.35/deb  InRelease                           
-Hit:9 https://eg.archive.ubuntu.com/ubuntu noble InRelease                                                              
-Hit:10 https://eg.archive.ubuntu.com/ubuntu noble-updates InRelease            
-Get:11 https://deb.debian.org/debian trixie-updates InRelease [47.3 kB]
-Hit:12 https://eg.archive.ubuntu.com/ubuntu noble-backports InRelease       
-Err:7 https://deb.debian.org/debian trixie InRelease                        
-  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 6ED0E7B82643E131 NO_PUBKEY 78DBA3BC47EF2265 NO_PUBKEY 762F67A0B2C39DE4
-Get:13 https://deb.debian.org/debian-security trixie-security InRelease [43.4 kB]
-Err:11 https://deb.debian.org/debian trixie-updates InRelease
-  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 6ED0E7B82643E131 NO_PUBKEY 78DBA3BC47EF2265
-Err:13 https://deb.debian.org/debian-security trixie-security InRelease
-  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY BDE6D2B9216EC7A8 NO_PUBKEY 8E9F831205B4BA95
-Hit:14 https://packages.openziti.org/zitipax-openziti-deb-stable debian InRelease
-Reading package lists... Done
-W: GPG error: https://deb.debian.org/debian trixie InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 6ED0E7B82643E131 NO_PUBKEY 78DBA3BC47EF2265 NO_PUBKEY 762F67A0B2C39DE4
-E: The repository 'https://deb.debian.org/debian trixie InRelease' is not signed.
-N: Updating from such a repository can't be done securely, and is therefore disabled by default.
-N: See apt-secure(8) manpage for repository creation and user configuration details.
-W: GPG error: https://deb.debian.org/debian trixie-updates InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 6ED0E7B82643E131 NO_PUBKEY 78DBA3BC47EF2265
-E: The repository 'https://deb.debian.org/debian trixie-updates InRelease' is not signed.
-N: Updating from such a repository can't be done securely, and is therefore disabled by default.
-N: See apt-secure(8) manpage for repository creation and user configuration details.
-W: GPG error: https://deb.debian.org/debian-security trixie-security InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY BDE6D2B9216EC7A8 NO_PUBKEY 8E9F831205B4BA95
-E: The repository 'https://deb.debian.org/debian-security trixie-security InRelease' is not signed.
-N: Updating from such a repository can't be done securely, and is therefore disabled by default.
-N: See apt-secure(8) manpage for repository creation and user configuration details.
-u1@server1:~$ 
+
+
+
+
+
