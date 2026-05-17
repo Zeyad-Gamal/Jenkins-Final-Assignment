@@ -1,6 +1,6 @@
 <?php
 namespace App;
-$c=20;
+$c=20
 class OrderProcessor {
     public function process($name, $service) {
         if (empty($name) || strlen($name) < 3) {
