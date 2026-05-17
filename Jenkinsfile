@@ -33,7 +33,15 @@ pipeline {
     }
 }
 
-        stage('Push to Docker Hub') {
+
+
+        stage('Build Docker Image') {
+            steps {
+                sh "docker build -t ${IMAGE_TAG} ."
+            }
+        }
+
+                stage('Push to Docker Hub') {
     steps {
         withCredentials([usernamePassword(
             credentialsId: 'dockerhub-creds',
@@ -49,12 +57,6 @@ pipeline {
         }
     }
 }
-
-        stage('Build Docker Image') {
-            steps {
-                sh "docker build -t ${IMAGE_TAG} ."
-            }
-        }
 
         stage('Run Unit Tests') {
             steps {
