@@ -1,28 +1,73 @@
 Warning: no key algorithms provided; JENKINS-42959 disabled
 SSHLauncher{host='192.168.148.131', port=22, credentialsId='ssh-jenkins', jvmOptions='', javaPath='', prefixStartSlaveCmd='', suffixStartSlaveCmd='', launchTimeoutSeconds=60, maxNumRetries=10, retryWaitTime=15, sshHostKeyVerificationStrategy=hudson.plugins.sshslaves.verifiers.KnownHostsFileKeyVerificationStrategy, tcpNoDelay=true, trackCredentials=true}
-[05/17/26 16:42:23] [SSH] Opening SSH connection to 192.168.148.131:22.
+[05/17/26 16:48:06] [SSH] Opening SSH connection to 192.168.148.131:22.
 Searching for 192.168.148.131 in /var/jenkins_home/.ssh/known_hosts
 Searching for 192.168.148.131:22 in /var/jenkins_home/.ssh/known_hosts
-[05/17/26 16:42:24] [SSH] SSH host key matches key in Known Hosts file. Connection will be allowed.
-ERROR: Server rejected the 1 private key(s) for jenkins-user (credentialId:ssh-jenkins/method:publickey)
-ERROR: Failed to authenticate as jenkins-user with credential=ssh-jenkins
-java.io.IOException: Publickey authentication failed.
-	at PluginClassLoader for trilead-api//com.trilead.ssh2.auth.AuthenticationManager.authenticatePublicKey(AuthenticationManager.java:362)
-	at PluginClassLoader for trilead-api//com.trilead.ssh2.Connection.authenticateWithPublicKey(Connection.java:474)
-	at PluginClassLoader for ssh-credentials//com.cloudbees.jenkins.plugins.sshcredentials.impl.TrileadSSHPublicKeyAuthenticator.doAuthenticate(TrileadSSHPublicKeyAuthenticator.java:110)
-	at PluginClassLoader for ssh-credentials//com.cloudbees.jenkins.plugins.sshcredentials.SSHAuthenticator.authenticate(SSHAuthenticator.java:431)
-	at PluginClassLoader for ssh-credentials//com.cloudbees.jenkins.plugins.sshcredentials.SSHAuthenticator.authenticate(SSHAuthenticator.java:468)
-	at PluginClassLoader for ssh-slaves//hudson.plugins.sshslaves.SSHLauncher.openConnection(SSHLauncher.java:890)
-	at PluginClassLoader for ssh-slaves//hudson.plugins.sshslaves.SSHLauncher.lambda$launch$0(SSHLauncher.java:446)
+[05/17/26 16:48:06] [SSH] SSH host key matches key in Known Hosts file. Connection will be allowed.
+[05/17/26 16:48:06] [SSH] Authentication successful.
+[05/17/26 16:48:06] [SSH] The remote user's environment is:
+BASH=/usr/bin/bash
+BASHOPTS=checkwinsize:cmdhist:complete_fullquote:extquote:force_fignore:globasciiranges:globskipdots:hostcomplete:interactive_comments:patsub_replacement:progcomp:promptvars:sourcepath
+BASH_ALIASES=()
+BASH_ARGC=([0]="0")
+BASH_ARGV=()
+BASH_CMDS=()
+BASH_EXECUTION_STRING=set
+BASH_LINENO=()
+BASH_LOADABLES_PATH=/usr/local/lib/bash:/usr/lib/bash:/opt/local/lib/bash:/usr/pkg/lib/bash:/opt/pkg/lib/bash:.
+BASH_SOURCE=()
+BASH_VERSINFO=([0]="5" [1]="2" [2]="21" [3]="1" [4]="release" [5]="x86_64-pc-linux-gnu")
+BASH_VERSION='5.2.21(1)-release'
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+DIRSTACK=()
+EUID=1000
+GROUPS=()
+HOME=/home/u1
+HOSTNAME=server1
+HOSTTYPE=x86_64
+IFS=$' \t\n'
+LANG=en_US.UTF-8
+LOGNAME=u1
+MACHTYPE=x86_64-pc-linux-gnu
+OPTERR=1
+OPTIND=1
+OSTYPE=linux-gnu
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PIPESTATUS=([0]="0")
+PPID=35967
+PS4='+ '
+PWD=/home/u1
+SHELL=/bin/bash
+SHELLOPTS=braceexpand:hashall:interactive-comments
+SHLVL=1
+SSH_CLIENT='172.17.0.2 44940 22'
+SSH_CONNECTION='172.17.0.2 44940 192.168.148.131 22'
+TERM=dumb
+UID=1000
+USER=u1
+XDG_RUNTIME_DIR=/run/user/1000
+XDG_SESSION_CLASS=user
+XDG_SESSION_ID=26
+XDG_SESSION_TYPE=tty
+_=']'
+[05/17/26 16:48:06] [SSH] Starting sftp client.
+[05/17/26 16:48:06] [SSH] Copying latest remoting.jar...
+java.io.IOException: Could not copy remoting.jar into '/home/jenkins' on agent
+	at PluginClassLoader for ssh-slaves//hudson.plugins.sshslaves.SSHLauncher.copyAgentJar(SSHLauncher.java:738)
+	at PluginClassLoader for ssh-slaves//hudson.plugins.sshslaves.SSHLauncher.lambda$launch$0(SSHLauncher.java:462)
 	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
 	at java.base/java.lang.Thread.run(Unknown Source)
-Caused by: java.io.IOException: PEM problem: it is of unknown type. Supported algorithms are :[ssh-ed25519, ecdsa-sha2-nistp521, ecdsa-sha2-nistp384, ecdsa-sha2-nistp256, rsa-sha2-256, rsa-sha2-512, ssh-rsa, ssh-dss]
-	at PluginClassLoader for trilead-api//com.trilead.ssh2.crypto.PEMDecoder.decodeKeyPair(PEMDecoder.java:482)
-	at PluginClassLoader for trilead-api//com.trilead.ssh2.auth.AuthenticationManager.authenticatePublicKey(AuthenticationManager.java:303)
-	... 10 more
-[05/17/26 16:42:24] [SSH] Authentication failed.
-Authentication failed.
-[05/17/26 16:42:24] Launch failed - cleaning up connection
-[05/17/26 16:42:24] [SSH] Connection closed.
+Caused by: java.io.IOException: Could not copy remoting.jar to '/home/jenkins/remoting.jar' on agent
+	at PluginClassLoader for ssh-slaves//hudson.plugins.sshslaves.SSHLauncher.copyAgentJar(SSHLauncher.java:730)
+	... 5 more
+Caused by: com.trilead.ssh2.SFTPException: Permission denied (SSH_FX_PERMISSION_DENIED: The user does not have sufficient permissions to perform the operation.)
+	at PluginClassLoader for trilead-api//com.trilead.ssh2.SFTPv3Client.openFile(SFTPv3Client.java:1235)
+	at PluginClassLoader for trilead-api//com.trilead.ssh2.SFTPv3Client.createFile(SFTPv3Client.java:1090)
+	at PluginClassLoader for trilead-api//com.trilead.ssh2.SFTPv3Client.createFile(SFTPv3Client.java:1071)
+	at PluginClassLoader for trilead-api//com.trilead.ssh2.jenkins.SFTPClient.writeToFile(SFTPClient.java:103)
+	at PluginClassLoader for ssh-slaves//hudson.plugins.sshslaves.SSHLauncher.copyAgentJar(SSHLauncher.java:723)
+	... 5 more
+[05/17/26 16:48:06] Launch failed - cleaning up connection
+[05/17/26 16:48:06] [SSH] Connection closed.
