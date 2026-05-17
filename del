@@ -1,56 +1,60 @@
-docker run -d \
-  --name jenkins \
-  -p 8080:8080 -p 50000:50000 \
-  -v jenkins_home:/var/jenkins_home \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  jenkins/jenkins:lts
-
-
-
-
-
-
-docker run -d \
-  --name sonarqube \
-  -p 9000:9000 \
-  -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true \
-  -v sonarqube_data:/opt/sonarqube/data \
-  -v sonarqube_extensions:/opt/sonarqube/extensions \
-  -v sonarqube_logs:/opt/sonarqube/logs \
-  sonarqube:lts-community
-
-
-
-
-
-
-
-
-u1@server1:~$ docker run -d \
-  --name jenkins \
-  -p 8080:8080 -p 50000:50000 \
-  -v jenkins_home:/var/jenkins_home \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  jenkins/jenkins:lts
-
-c7a0776b3e26588a5ff8b72cde2dcc051c7d3efb8dc61f5144318d7196593f7a
-docker: Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint jenkins (98166c0d1b857da03e37eb14a9e941a89ea326938bfec2e8f0daecd016dca538): failed to bind host port 0.0.0.0:8080/tcp: address already in use
-
-Run 'docker run --help' for more information
-u1@server1:~$ 
-
-
-
-
-
-
-
-
-
-docker run -d \
-  --name sonarqube \
-  -p 9000:9000 \
-  -v sonarqube_data:/opt/sonarqube/data \
-  -v sonarqube_extensions:/opt/sonarqube/extensions \
-  -v sonarqube_logs:/opt/sonarqube/logs \
-  sonarqube:lts-community
+/var/jenkins_home/.ssh/known_hosts [SSH] No Known Hosts file was found at /var/jenkins_home/.ssh/known_hosts. Please ensure one is created at this path and that Jenkins can read it.
+Key exchange was not finished, connection is closed.
+SSH Connection failed with IOException: "Key exchange was not finished, connection is closed.", retrying in 15 seconds. There are 9 more retries left.
+/var/jenkins_home/.ssh/known_hosts [SSH] No Known Hosts file was found at /var/jenkins_home/.ssh/known_hosts. Please ensure one is created at this path and that Jenkins can read it.
+Key exchange was not finished, connection is closed.
+SSH Connection failed with IOException: "Key exchange was not finished, connection is closed.", retrying in 15 seconds. There are 8 more retries left.
+/var/jenkins_home/.ssh/known_hosts [SSH] No Known Hosts file was found at /var/jenkins_home/.ssh/known_hosts. Please ensure one is created at this path and that Jenkins can read it.
+Key exchange was not finished, connection is closed.
+SSH Connection failed with IOException: "Key exchange was not finished, connection is closed.", retrying in 15 seconds. There are 7 more retries left.
+/var/jenkins_home/.ssh/known_hosts [SSH] No Known Hosts file was found at /var/jenkins_home/.ssh/known_hosts. Please ensure one is created at this path and that Jenkins can read it.
+Key exchange was not finished, connection is closed.
+SSH Connection failed with IOException: "Key exchange was not finished, connection is closed.", retrying in 15 seconds. There are 6 more retries left.
+/var/jenkins_home/.ssh/known_hosts [SSH] No Known Hosts file was found at /var/jenkins_home/.ssh/known_hosts. Please ensure one is created at this path and that Jenkins can read it.
+Key exchange was not finished, connection is closed.
+SSH Connection failed with IOException: "Key exchange was not finished, connection is closed.", retrying in 15 seconds. There are 5 more retries left.
+/var/jenkins_home/.ssh/known_hosts [SSH] No Known Hosts file was found at /var/jenkins_home/.ssh/known_hosts. Please ensure one is created at this path and that Jenkins can read it.
+Key exchange was not finished, connection is closed.
+SSH Connection failed with IOException: "Key exchange was not finished, connection is closed.", retrying in 15 seconds. There are 4 more retries left.
+/var/jenkins_home/.ssh/known_hosts [SSH] No Known Hosts file was found at /var/jenkins_home/.ssh/known_hosts. Please ensure one is created at this path and that Jenkins can read it.
+Key exchange was not finished, connection is closed.
+SSH Connection failed with IOException: "Key exchange was not finished, connection is closed.", retrying in 15 seconds. There are 3 more retries left.
+/var/jenkins_home/.ssh/known_hosts [SSH] No Known Hosts file was found at /var/jenkins_home/.ssh/known_hosts. Please ensure one is created at this path and that Jenkins can read it.
+Key exchange was not finished, connection is closed.
+SSH Connection failed with IOException: "Key exchange was not finished, connection is closed.", retrying in 15 seconds. There are 2 more retries left.
+/var/jenkins_home/.ssh/known_hosts [SSH] No Known Hosts file was found at /var/jenkins_home/.ssh/known_hosts. Please ensure one is created at this path and that Jenkins can read it.
+Key exchange was not finished, connection is closed.
+SSH Connection failed with IOException: "Key exchange was not finished, connection is closed.", retrying in 15 seconds. There are 1 more retries left.
+/var/jenkins_home/.ssh/known_hosts [SSH] No Known Hosts file was found at /var/jenkins_home/.ssh/known_hosts. Please ensure one is created at this path and that Jenkins can read it.
+Key exchange was not finished, connection is closed.
+ERROR: Connection is not established!
+java.lang.IllegalStateException: Connection is not established!
+	at PluginClassLoader for trilead-api//com.trilead.ssh2.Connection.getRemainingAuthMethods(Connection.java:1002)
+	at PluginClassLoader for ssh-credentials//com.cloudbees.jenkins.plugins.sshcredentials.impl.TrileadSSHPublicKeyAuthenticator.getRemainingAuthMethods(TrileadSSHPublicKeyAuthenticator.java:89)
+	at PluginClassLoader for ssh-credentials//com.cloudbees.jenkins.plugins.sshcredentials.impl.TrileadSSHPublicKeyAuthenticator.canAuthenticate(TrileadSSHPublicKeyAuthenticator.java:81)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(Unknown Source)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(Unknown Source)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(Unknown Source)
+	at java.base/java.util.Spliterators$IteratorSpliterator.tryAdvance(Unknown Source)
+	at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(Unknown Source)
+	at java.base/java.util.stream.FindOps$FindOp.evaluateSequential(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(Unknown Source)
+	at java.base/java.util.stream.ReferencePipeline.findFirst(Unknown Source)
+	at PluginClassLoader for ssh-credentials//com.cloudbees.jenkins.plugins.sshcredentials.SSHAuthenticator.newInstance(SSHAuthenticator.java:222)
+	at PluginClassLoader for ssh-credentials//com.cloudbees.jenkins.plugins.sshcredentials.SSHAuthenticator.newInstance(SSHAuthenticator.java:173)
+	at PluginClassLoader for ssh-slaves//hudson.plugins.sshslaves.SSHLauncher.openConnection(SSHLauncher.java:890)
+	at PluginClassLoader for ssh-slaves//hudson.plugins.sshslaves.SSHLauncher.lambda$launch$0(SSHLauncher.java:446)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+[05/17/26 16:22:14] Launch failed - cleaning up connection
+[05/17/26 16:22:14] [SSH] Connection closed.
+SSHLauncher{host='192.168.148.131', port=22, credentialsId='ssh-jenkins', jvmOptions='', javaPath='', prefixStartSlaveCmd='', suffixStartSlaveCmd='', launchTimeoutSeconds=60, maxNumRetries=10, retryWaitTime=15, sshHostKeyVerificationStrategy=hudson.plugins.sshslaves.verifiers.KnownHostsFileKeyVerificationStrategy, tcpNoDelay=true, trackCredentials=true}
+[05/17/26 16:22:14] [SSH] Opening SSH connection to 192.168.148.131:22.
+/var/jenkins_home/.ssh/known_hosts [SSH] No Known Hosts file was found at /var/jenkins_home/.ssh/known_hosts. Please ensure one is created at this path and that Jenkins can read it.
+Key exchange was not finished, connection is closed.
+SSH Connection failed with IOException: "Key exchange was not finished, connection is closed.", retrying in 15 seconds. There are 10 more retries left.
