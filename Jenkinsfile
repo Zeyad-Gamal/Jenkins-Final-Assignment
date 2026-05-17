@@ -137,18 +137,35 @@ pipeline {
             }
         }
 
+        // stage('SonarQube Analysis') {
+        //     steps {
+        //         withSonarQubeEnv('SonarQube-Server') {
+        //             sh """
+        //                 ${tool 'SonarScanner'}/bin/sonar-scanner \
+        //                 -Dsonar.projectKey=service-app \
+        //                 -Dsonar.sources=./src \
+        //                 -Dsonar.host.url=http://sonarqube:9000
+        //             """
+        //         }
+        //     }
+        // }
+
+
         stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQube-Server') {
-                    sh """
-                        ${tool 'SonarScanner'}/bin/sonar-scanner \
-                        -Dsonar.projectKey=service-app \
-                        -Dsonar.sources=./src \
-                        -Dsonar.host.url=http://sonarqube:9000
-                    """
-                }
+    steps {
+        withSonarQubeEnv('SonarQube-Server') {
+            withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
+                sh """
+                    ${tool 'SonarScanner'}/bin/sonar-scanner \
+                    -Dsonar.projectKey=service-app \
+                    -Dsonar.sources=./src \
+                    -Dsonar.host.url=http://sonarqube:9000 \
+                    -Dsonar.login=$SONAR_TOKEN
+                """
             }
         }
+    }
+}
 
         stage('Build Docker Image') {
             steps {
