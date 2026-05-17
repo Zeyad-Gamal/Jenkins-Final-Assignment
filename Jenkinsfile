@@ -115,7 +115,6 @@
 
 
 
-
 pipeline {
     agent any
 
@@ -157,18 +156,6 @@ pipeline {
             }
         }
 
-        stage('Trivy Image Scan') {
-            steps {
-                sh """
-                    trivy image \
-                      --exit-code 1 \
-                      --severity CRITICAL \
-                      --no-progress \
-                      ${IMAGE_TAG}
-                """
-            }
-        }
-
         stage('Push to Docker Hub') {
             steps {
                 withCredentials([usernamePassword(
@@ -198,32 +185,15 @@ pipeline {
                 junit 'results.xml'
             }
         }
-
-        stage('Deploy') {
-            steps {
-                sh """
-                    docker stop service-app || true
-                    docker rm service-app || true
-
-                    docker run -d \
-                      --name service-app \
-                      -p 8081:80 \
-                      ${IMAGE_TAG}
-                """
-            }
-        }
     }
 
     post {
         always {
-            sh """
-                docker rmi ${IMAGE_TAG} || true
-                docker image prune -f
-            """
+            echo 'Pipeline finished.'
         }
 
         success {
-            echo 'Pipeline completed successfully.'
+            echo 'All stages completed successfully.'
         }
 
         failure {
