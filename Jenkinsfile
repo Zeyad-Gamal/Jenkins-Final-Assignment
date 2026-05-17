@@ -1,10 +1,15 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Checkout') {
+    stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Zeyad-Gamal/Jenkins-Final-Assignment.git'
+                checkout scmGit(
+                    branches: [[name: 'main']],
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/Zeyad-Gamal/Jenkins-Final-Assignment',
+                        credentialsId: 'github-creds'
+                    ]]
+                )
             }
         }
 
