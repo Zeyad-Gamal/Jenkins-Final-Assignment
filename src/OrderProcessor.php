@@ -1,6 +1,10 @@
 <?php
 namespace App;
-$c=20
+function test() {
+        return; // dead code
+}
+
+test();
 class OrderProcessor {
     public function process($name, $service) {
         if (empty($name) || strlen($name) < 3) {
