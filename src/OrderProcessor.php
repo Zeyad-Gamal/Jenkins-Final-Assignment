@@ -1,4 +1,20 @@
-// <?php
+ <?php
+
+class OrderProcessor {
+
+    public function process() {
+        $a = 1;
+        $b = 2;
+        $c = 3;
+        $d = 4;
+        $e = 5;
+        $f = 6;
+
+        return $a;
+    }
+}
+
+
 // namespace App;
 
 // class OrderProcessor {
@@ -18,29 +34,3 @@
 //         ];
 //     }
 // }
-
-<?php
-namespace App;
-
-class OrderProcessor {
-
-    public function process($name, $service) {
-
-        $x = 10;          // unused variable ❌ (code smell)
-
-        if ($name == "") {   // weak comparison ❌
-            return "error";
-        }
-
-        if ($service == "test") {
-            return "ok";
-        }
-
-        // duplicated logic ❌
-        if ($service == "test") {
-            return "duplicate";
-        }
-
-        return "done";
-    }
-}
