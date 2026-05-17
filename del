@@ -1,5 +1,13 @@
-docker run -d \
-  --name jenkins \
-  --network ci-network \
-  -p 8080:8080 -p 50000:50000 \
-  jenkins/jenkins:lts
+62
+u1@server1:~$ docker exec -it jenkins bash\
+> ^C
+u1@server1:~$ docker exec -it jenkins bash
+jenkins@a5a734a0ca42:/$ ping sonarqube
+bash: ping: command not found
+jenkins@a5a734a0ca42:/$ 
+
+
+
+
+
+
