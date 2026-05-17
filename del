@@ -1,11 +1,11 @@
 Warning: no key algorithms provided; JENKINS-42959 disabled
 SSHLauncher{host='192.168.148.131', port=22, credentialsId='ssh-jenkins', jvmOptions='', javaPath='', prefixStartSlaveCmd='', suffixStartSlaveCmd='', launchTimeoutSeconds=60, maxNumRetries=10, retryWaitTime=15, sshHostKeyVerificationStrategy=hudson.plugins.sshslaves.verifiers.KnownHostsFileKeyVerificationStrategy, tcpNoDelay=true, trackCredentials=true}
-[05/17/26 16:48:06] [SSH] Opening SSH connection to 192.168.148.131:22.
+[05/17/26 16:49:18] [SSH] Opening SSH connection to 192.168.148.131:22.
 Searching for 192.168.148.131 in /var/jenkins_home/.ssh/known_hosts
 Searching for 192.168.148.131:22 in /var/jenkins_home/.ssh/known_hosts
-[05/17/26 16:48:06] [SSH] SSH host key matches key in Known Hosts file. Connection will be allowed.
-[05/17/26 16:48:06] [SSH] Authentication successful.
-[05/17/26 16:48:06] [SSH] The remote user's environment is:
+[05/17/26 16:49:18] [SSH] SSH host key matches key in Known Hosts file. Connection will be allowed.
+[05/17/26 16:49:18] [SSH] Authentication successful.
+[05/17/26 16:49:18] [SSH] The remote user's environment is:
 BASH=/usr/bin/bash
 BASHOPTS=checkwinsize:cmdhist:complete_fullquote:extquote:force_fignore:globasciiranges:globskipdots:hostcomplete:interactive_comments:patsub_replacement:progcomp:promptvars:sourcepath
 BASH_ALIASES=()
@@ -34,40 +34,34 @@ OPTIND=1
 OSTYPE=linux-gnu
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 PIPESTATUS=([0]="0")
-PPID=35967
+PPID=36116
 PS4='+ '
 PWD=/home/u1
 SHELL=/bin/bash
 SHELLOPTS=braceexpand:hashall:interactive-comments
 SHLVL=1
-SSH_CLIENT='172.17.0.2 44940 22'
-SSH_CONNECTION='172.17.0.2 44940 192.168.148.131 22'
+SSH_CLIENT='172.17.0.2 60696 22'
+SSH_CONNECTION='172.17.0.2 60696 192.168.148.131 22'
 TERM=dumb
 UID=1000
 USER=u1
 XDG_RUNTIME_DIR=/run/user/1000
 XDG_SESSION_CLASS=user
-XDG_SESSION_ID=26
+XDG_SESSION_ID=27
 XDG_SESSION_TYPE=tty
 _=']'
-[05/17/26 16:48:06] [SSH] Starting sftp client.
-[05/17/26 16:48:06] [SSH] Copying latest remoting.jar...
-java.io.IOException: Could not copy remoting.jar into '/home/jenkins' on agent
-	at PluginClassLoader for ssh-slaves//hudson.plugins.sshslaves.SSHLauncher.copyAgentJar(SSHLauncher.java:738)
-	at PluginClassLoader for ssh-slaves//hudson.plugins.sshslaves.SSHLauncher.lambda$launch$0(SSHLauncher.java:462)
-	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
-	at java.base/java.lang.Thread.run(Unknown Source)
-Caused by: java.io.IOException: Could not copy remoting.jar to '/home/jenkins/remoting.jar' on agent
-	at PluginClassLoader for ssh-slaves//hudson.plugins.sshslaves.SSHLauncher.copyAgentJar(SSHLauncher.java:730)
-	... 5 more
-Caused by: com.trilead.ssh2.SFTPException: Permission denied (SSH_FX_PERMISSION_DENIED: The user does not have sufficient permissions to perform the operation.)
-	at PluginClassLoader for trilead-api//com.trilead.ssh2.SFTPv3Client.openFile(SFTPv3Client.java:1235)
-	at PluginClassLoader for trilead-api//com.trilead.ssh2.SFTPv3Client.createFile(SFTPv3Client.java:1090)
-	at PluginClassLoader for trilead-api//com.trilead.ssh2.SFTPv3Client.createFile(SFTPv3Client.java:1071)
-	at PluginClassLoader for trilead-api//com.trilead.ssh2.jenkins.SFTPClient.writeToFile(SFTPClient.java:103)
-	at PluginClassLoader for ssh-slaves//hudson.plugins.sshslaves.SSHLauncher.copyAgentJar(SSHLauncher.java:723)
-	... 5 more
-[05/17/26 16:48:06] Launch failed - cleaning up connection
-[05/17/26 16:48:06] [SSH] Connection closed.
+[05/17/26 16:49:18] [SSH] Starting sftp client.
+[05/17/26 16:49:18] [SSH] Copying latest remoting.jar...
+[05/17/26 16:49:18] [SSH] Copied 1,407,936 bytes.
+Expanded the channel window size to 4MB
+[05/17/26 16:49:18] [SSH] Starting agent process: cd "/home/u1" && java  -jar remoting.jar -workDir /home/u1 -jar-cache /home/u1/remoting/jarCache
+May 17, 2026 7:49:18 PM org.jenkinsci.remoting.engine.WorkDirManager initializeWorkDir
+INFO: Using /home/u1/remoting as a remoting work directory
+May 17, 2026 7:49:18 PM org.jenkinsci.remoting.engine.WorkDirManager setupLogging
+INFO: Both error and output logs will be printed to /home/u1/remoting
+<===[JENKINS REMOTING CAPACITY]===>channel started
+Remoting version: 3355.v388858a_47b_33
+Launcher: SSHLauncher
+Communication Protocol: Standard in/out
+This is a Unix agent
+Agent successfully connected and online
