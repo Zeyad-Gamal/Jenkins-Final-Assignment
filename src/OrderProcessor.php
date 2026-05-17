@@ -1,10 +1,6 @@
 <?php
 namespace App;
-function test() {
-        return; // dead code
-}
-
-test();
+echo $notdefvar;
 class OrderProcessor {
     public function process($name, $service) {
         if (empty($name) || strlen($name) < 3) {
