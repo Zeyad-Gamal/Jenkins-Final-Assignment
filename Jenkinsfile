@@ -7,7 +7,7 @@ pipeline {
                     branches: [[name: 'main']],
                     userRemoteConfigs: [[
                         url: 'https://github.com/Zeyad-Gamal/Jenkins-Final-Assignment',
-                        credentialsId: 'github-creds'
+                        credentialsId: 'jenkins-final'
                     ]]
                 )
             }
