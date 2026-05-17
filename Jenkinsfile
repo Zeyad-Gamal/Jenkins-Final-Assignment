@@ -131,7 +131,8 @@ pipeline {
                     branches: [[name: 'main']],
                     userRemoteConfigs: [[
                         url: 'https://github.com/Zeyad-Gamal/Jenkins-Final-Assignment.git',
-                        credentialsId: 'github-creds'
+                        // credentialsId: 'github-creds'
+                        credentialsId: 'jenkins-token'
                     ]]
                 )
             }
