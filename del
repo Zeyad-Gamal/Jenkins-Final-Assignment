@@ -1,26 +1,25 @@
-sudo systemctl enable dockeru1@server1:~$ ls /etc/apt/sources.list.d/
-ansible-ubuntu-ansible-noble.sources  grafana.list    helm-stable-debian.list  openziti-release.list  ubuntu.sources.curtin.orig
-docker.sources                        hashicorp.list  kubernetes.list          ubuntu.sources         vscode.sources
-u1@server1:~$ sudo rm /etc/apt/sources.list.d/*debian*
 u1@server1:~$ sudo apt update
+
+sudo ap
+0% [Working]tall -y docker.io
 Hit:1 https://apt.releases.hashicorp.com noble InRelease
 Hit:2 https://download.docker.com/linux/ubuntu noble InRelease                                                                    
 Hit:3 https://apt.grafana.com stable InRelease                                                                                    
-Get:4 https://deb.debian.org/debian trixie InRelease [140 kB]                                                                     
-Hit:5 https://packages.microsoft.com/repos/code stable InRelease                                                                  
-Hit:6 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.35/deb  InRelease                           
-Get:7 https://deb.debian.org/debian trixie-updates InRelease [47.3 kB]                                                            
-Hit:8 https://ppa.launchpadcontent.net/ansible/ansible/ubuntu noble InRelease                                   
-Hit:9 https://eg.archive.ubuntu.com/ubuntu noble InRelease                                
-Hit:10 https://security.ubuntu.com/ubuntu noble-security InRelease                        
-Get:11 https://deb.debian.org/debian-security trixie-security InRelease [43.4 kB]
-Err:4 https://deb.debian.org/debian trixie InRelease                              
+Get:5 https://deb.debian.org/debian trixie InRelease [140 kB]                                                                     
+Hit:6 https://eg.archive.ubuntu.com/ubuntu noble InRelease                                                                        
+Hit:7 https://ppa.launchpadcontent.net/ansible/ansible/ubuntu noble InRelease                                                     
+Get:8 https://deb.debian.org/debian trixie-updates InRelease [47.3 kB]                                                            
+Hit:9 https://security.ubuntu.com/ubuntu noble-security InRelease                                                                 
+Hit:4 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.35/deb  InRelease                           
+Hit:10 https://eg.archive.ubuntu.com/ubuntu noble-updates InRelease                                             
+Get:11 https://deb.debian.org/debian-security trixie-security InRelease [43.4 kB]         
+Err:5 https://deb.debian.org/debian trixie InRelease                                                    
   The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 6ED0E7B82643E131 NO_PUBKEY 78DBA3BC47EF2265 NO_PUBKEY 762F67A0B2C39DE4
-Hit:12 https://packages.openziti.org/zitipax-openziti-deb-stable debian InRelease
-Hit:13 https://eg.archive.ubuntu.com/ubuntu noble-updates InRelease
-Hit:14 https://eg.archive.ubuntu.com/ubuntu noble-backports InRelease
-Err:7 https://deb.debian.org/debian trixie-updates InRelease
+Hit:12 https://packages.microsoft.com/repos/code stable InRelease   
+Hit:13 https://eg.archive.ubuntu.com/ubuntu noble-backports InRelease
+Err:8 https://deb.debian.org/debian trixie-updates InRelease
   The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 6ED0E7B82643E131 NO_PUBKEY 78DBA3BC47EF2265
+Hit:14 https://packages.openziti.org/zitipax-openziti-deb-stable debian InRelease
 Err:11 https://deb.debian.org/debian-security trixie-security InRelease
   The following signatures couldn't be verified because the public key is not available: NO_PUBKEY BDE6D2B9216EC7A8 NO_PUBKEY 8E9F831205B4BA95
 Reading package lists... Done
@@ -36,6 +35,15 @@ W: GPG error: https://deb.debian.org/debian-security trixie-security InRelease: 
 E: The repository 'https://deb.debian.org/debian-security trixie-security InRelease' is not signed.
 N: Updating from such a repository can't be done securely, and is therefore disabled by default.
 N: See apt-secure(8) manpage for repository creation and user configuration details.
-u1@server1:~$ docker run hello-world
+u1@server1:~$ sudo systemctl enable --now docker
+
+su
+sudo sydocker.service is not a native service, redirecting to systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install enable docker
+stemctl restart dockeru1@server1:~$ 
+u1@server1:~$ which docker
+
+u1@server1:~$ 
+u1@server1:~$ docker version
 bash: /usr/bin/docker: No such file or directory
 u1@server1:~$ 
