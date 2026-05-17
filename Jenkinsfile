@@ -154,7 +154,7 @@ pipeline {
         stage('SonarQube Analysis') {
     steps {
         withSonarQubeEnv('SonarQube-Server') {
-            withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
+            withCredentials([string(credentialsId: 'service-app', variable: 'SONAR_TOKEN')]) {
                 sh """
                     ${tool 'SonarScanner'}/bin/sonar-scanner \
                     -Dsonar.projectKey=service-app \
