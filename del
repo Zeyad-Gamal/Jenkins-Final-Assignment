@@ -1,61 +1,39 @@
-lsu1@server1:~$ 
- u1@server1:~$ ls -l /usr/bin/docker
-ls: cannot access '/usr/bin/docker': No such file or directory
-u1@server1:~$ ls -l /usr/bin/docker
-ls: cannot access '/usr/bin/docker': No such file or directory
-u1@server1:~$ which docker
-u1@server1:~$ ls -l /usr/bin/docker
-ls: cannot access '/usr/bin/docker': No such file or directory
-u1@server1:~$ sudo apt remove -y docker docker.io docker-engine docker-ce docker-ce-cli containerd runc
-
-sudo apt autoremove -y[sudo] password for u1: 
-
-Sorry, try again.
-[sudo] password for u1: 
-u1Sorry, try again.
-[sudo] password for u1: 
-Reading package lists... Done
-Building dependency tree... Done
-Reading state information... Done
-Package 'docker' is not installed, so not removed
-Package 'docker-engine' is not installed, so not removed
-Package 'docker.io' is not installed, so not removed
-Package 'docker-ce' is not installed, so not removed
-Package 'docker-ce-cli' is not installed, so not removed
-Package 'containerd' is not installed, so not removed
-Package 'runc' is not installed, so not removed
-The following packages were automatically installed and are no longer required:
-  bridge-utils pigz ubuntu-fan
-Use 'sudo apt autoremove' to remove them.
-0 upgraded, 0 newly installed, 0 to remove and 158 not upgraded.
-u1@server1:~$ sudo rm -rf /var/lib/docker
+u1@server1:~$ ls /etc/apt/sources.list.d/
+ansible-ubuntu-ansible-noble.sources  grafana.list    kubernetes.list        ubuntu.sources              vscode.sources
+docker.sources                        hashicorp.list  openziti-release.list  ubuntu.sources.curtin.orig
+u1@server1:~$ sudo rm -f /etc/apt/sources.list.d/*debian*
+u1@server1:~$ grep -r "debian" /etc/apt/
+/etc/apt/sources.list.d/openziti-release.list:deb [signed-by=/usr/share/keyrings/openziti.gpg] https://packages.openziti.org/zitipax-openziti-deb-stable debian main
+/etc/apt/sources.list:deb https://deb.debian.org/debian trixie main contrib non-free
+/etc/apt/sources.list:deb https://deb.debian.org/debian trixie-updates main contrib non-free
+/etc/apt/sources.list:deb https://deb.debian.org/debian-security trixie-security main contrib non-free
+/etc/apt/apt.conf.d/20dbus:APT::Update::Post-Invoke-Success { "[ ! -f /var/run/dbus/system_bus_socket ] || /usr/bin/dbus-send --system --dest=org.debian.apt --type=signal /org/debian/apt org.debian.apt.CacheChanged || true"; };
+u1@server1:~$ sudo apt clean
 
 su
-sudo rm -rf /var/lib/containerd
-
-
+sudo apt updu1@server1:~$ date --allow-insecure-repositories
+date: unrecognized option '--allow-insecure-repositories'
+Try 'date --help' for more information.
 u1@server1:~$ sudo apt update
-
-sudo 
 Hit:1 https://download.docker.com/linux/ubuntu noble InRelease
 Hit:2 https://apt.releases.hashicorp.com noble InRelease                                                                          
 Hit:3 https://apt.grafana.com stable InRelease                                                                                    
-Hit:4 https://security.ubuntu.com/ubuntu noble-security InRelease                                                                 
+Hit:5 https://packages.microsoft.com/repos/code stable InRelease                                                                  
 Hit:6 https://ppa.launchpadcontent.net/ansible/ansible/ubuntu noble InRelease                                                     
 Get:7 https://deb.debian.org/debian trixie InRelease [140 kB]                                                                     
-Hit:8 https://packages.microsoft.com/repos/code stable InRelease                                
-Hit:5 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.35/deb  InRelease                           
-Get:9 https://deb.debian.org/debian trixie-updates InRelease [47.3 kB]                                                            
-Err:7 https://deb.debian.org/debian trixie InRelease                       
+Hit:8 https://security.ubuntu.com/ubuntu noble-security InRelease                                                                 
+Hit:4 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.35/deb  InRelease                           
+Hit:9 https://eg.archive.ubuntu.com/ubuntu noble InRelease                                                              
+Hit:10 https://eg.archive.ubuntu.com/ubuntu noble-updates InRelease            
+Get:11 https://deb.debian.org/debian trixie-updates InRelease [47.3 kB]
+Hit:12 https://eg.archive.ubuntu.com/ubuntu noble-backports InRelease       
+Err:7 https://deb.debian.org/debian trixie InRelease                        
   The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 6ED0E7B82643E131 NO_PUBKEY 78DBA3BC47EF2265 NO_PUBKEY 762F67A0B2C39DE4
-Get:10 https://deb.debian.org/debian-security trixie-security InRelease [43.4 kB]
-Hit:11 https://eg.archive.ubuntu.com/ubuntu noble InRelease                 
-Err:9 https://deb.debian.org/debian trixie-updates InRelease
+Get:13 https://deb.debian.org/debian-security trixie-security InRelease [43.4 kB]
+Err:11 https://deb.debian.org/debian trixie-updates InRelease
   The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 6ED0E7B82643E131 NO_PUBKEY 78DBA3BC47EF2265
-Err:10 https://deb.debian.org/debian-security trixie-security InRelease
+Err:13 https://deb.debian.org/debian-security trixie-security InRelease
   The following signatures couldn't be verified because the public key is not available: NO_PUBKEY BDE6D2B9216EC7A8 NO_PUBKEY 8E9F831205B4BA95
-Hit:12 https://eg.archive.ubuntu.com/ubuntu noble-updates InRelease
-Hit:13 https://eg.archive.ubuntu.com/ubuntu noble-backports InRelease
 Hit:14 https://packages.openziti.org/zitipax-openziti-deb-stable debian InRelease
 Reading package lists... Done
 W: GPG error: https://deb.debian.org/debian trixie InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 6ED0E7B82643E131 NO_PUBKEY 78DBA3BC47EF2265 NO_PUBKEY 762F67A0B2C39DE4
