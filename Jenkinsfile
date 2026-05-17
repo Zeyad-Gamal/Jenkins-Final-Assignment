@@ -15,6 +15,19 @@ pipeline {
             }
         }
 
+        stage('SonarQube Analysis') {
+    steps {
+        withSonarQubeEnv('SonarQube-Server') {
+            sh """
+                ${tool 'SonarScanner'}/bin/sonar-scanner \
+                -Dsonar.projectKey=service-app \
+                -Dsonar.sources=./src \
+                -Dsonar.host.url=http://localhost:9000
+            """
+        }
+    }
+}
+
         stage('Run Unit Tests') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
