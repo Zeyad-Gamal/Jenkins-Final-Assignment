@@ -1,10 +1,10 @@
 <?php
 namespace App;
-$a;
+
 class OrderProcessor {
-    // private $apiKey = "sk_test_4eC39HqLyjWDarjtT1zdp7dc";
+    private $apiKey = "sk_test_4eC39HqLyjWDarjtT1zdp7dc";
     public function process($name, $service) {
-        // $unusedVariable = "I am not used anywhere";
+        $unusedVariable = "I am not used anywhere";
         if (empty($name) || strlen($name) < 3) {
             return ["status" => "error", "message" => "Invalid Name"];
         }
@@ -19,6 +19,6 @@ class OrderProcessor {
             "message" => "Order Confirmed for $name"
         ];
     }
-    // public function emptyFunction() {
-    // }
+    public function emptyFunction() {
+    }
 }
