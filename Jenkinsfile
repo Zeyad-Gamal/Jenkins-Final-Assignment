@@ -264,7 +264,7 @@ pipeline {
     }
 
     post {
-        aalways {
+        always {
         echo 'Pipeline finished.'
 
         sh """
