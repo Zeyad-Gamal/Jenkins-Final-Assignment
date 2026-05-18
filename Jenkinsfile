@@ -175,18 +175,6 @@ pipeline {
         }
 
 
-//         stage('Trivy Image Scan') {
-//     steps {
-//         sh """
-//             trivy image \
-//               --exit-code 1 \
-//               --severity CRITICAL \
-//               --no-progress \
-//               zeyadgamal/service-app:${BUILD_NUMBER}
-//         """
-//     }
-// }
-
         stage('Trivy Image Scan') {
     steps {
         sh """
@@ -194,10 +182,22 @@ pipeline {
               --exit-code 1 \
               --severity CRITICAL \
               --no-progress \
-              ${IMAGE_TAG}
+              zeyadgamal/service-app:${BUILD_NUMBER}
         """
     }
 }
+
+//         stage('Trivy Image Scan') {
+//     steps {
+//         sh """
+//             trivy image \
+//               --exit-code 1 \
+//               --severity CRITICAL \
+//               --no-progress \
+//               ${IMAGE_TAG}
+//         """
+//     }
+// }
 
         stage('Push to Docker Hub') {
             steps {
