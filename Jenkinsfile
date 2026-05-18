@@ -152,23 +152,7 @@ pipeline {
         // }
 
 
-//         stage('SonarQube Analysis') {
-//     steps {
-//         withSonarQubeEnv('SonarQube-Server') {
-//             withCredentials([string(credentialsId: 'service-app', variable: 'SONAR_TOKEN')]) {
-//                 sh """
-//                     ${tool 'SonarScanner'}/bin/sonar-scanner \
-//                     -Dsonar.projectKey=service-app \
-//                     -Dsonar.sources=./src \
-//                     -Dsonar.host.url=http://localhost:9000 \
-//                     -Dsonar.login=$SONAR_TOKEN
-//                 """
-//             }
-//         }
-//     }
-// }
-
-stage('SonarQube Analysis') {
+        stage('SonarQube Analysis') {
     steps {
         withSonarQubeEnv('SonarQube-Server') {
             withCredentials([string(credentialsId: 'service-app', variable: 'SONAR_TOKEN')]) {
@@ -177,13 +161,14 @@ stage('SonarQube Analysis') {
                     -Dsonar.projectKey=service-app \
                     -Dsonar.sources=./src \
                     -Dsonar.host.url=http://localhost:9000 \
-                    -Dsonar.login=$SONAR_TOKEN \
-                    -Dsonar.qualitygate.wait=true
+                    -Dsonar.login=$SONAR_TOKEN
                 """
             }
         }
     }
 }
+
+
 
 stage('Quality Gate') {
     steps {
