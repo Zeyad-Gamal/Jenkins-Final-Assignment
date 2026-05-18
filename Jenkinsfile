@@ -132,7 +132,7 @@ pipeline {
                     userRemoteConfigs: [[
                         url: 'https://github.com/Zeyad-Gamal/Jenkins-Final-Assignment.git',
                         // credentialsId: 'github-creds'
-                        credentialsId: 'jenkins-token'
+                        credentialsId: 'jenkins-lab'
                     ]]
                 )
             }
