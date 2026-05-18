@@ -160,7 +160,7 @@ pipeline {
                     ${tool 'SonarScanner'}/bin/sonar-scanner \
                     -Dsonar.projectKey=service-app \
                     -Dsonar.sources=./src \
-                    -Dsonar.host.url=http://sonarqube:9000 \
+                    -Dsonar.host.url=http://localhost:9000 \
                     -Dsonar.login=$SONAR_TOKEN
                 """
             }
