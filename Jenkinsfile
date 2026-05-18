@@ -152,6 +152,22 @@ pipeline {
         // }
 
 
+//         stage('SonarQube Analysis') {
+//     steps {
+//         withSonarQubeEnv('SonarQube-Server') {
+//             withCredentials([string(credentialsId: 'service-app', variable: 'SONAR_TOKEN')]) {
+//                 sh """
+//                     ${tool 'SonarScanner'}/bin/sonar-scanner \
+//                     -Dsonar.projectKey=service-app \
+//                     -Dsonar.sources=./src \
+//                     -Dsonar.host.url=http://localhost:9000 \
+//                     -Dsonar.login=$SONAR_TOKEN
+//                 """
+//             }
+//         }
+//     }
+// }
+
         stage('SonarQube Analysis') {
     steps {
         withSonarQubeEnv('SonarQube-Server') {
@@ -168,7 +184,7 @@ pipeline {
     }
 }
 
-        stage('Quality Gate') {
+stage('Quality Gate') {
     steps {
         timeout(time: 2, unit: 'MINUTES') {
             waitForQualityGate abortPipeline: true
