@@ -168,7 +168,7 @@ pipeline {
 //     }
 // }
 
-        stage('SonarQube Analysis') {
+stage('SonarQube Analysis') {
     steps {
         withSonarQubeEnv('SonarQube-Server') {
             withCredentials([string(credentialsId: 'service-app', variable: 'SONAR_TOKEN')]) {
@@ -177,7 +177,8 @@ pipeline {
                     -Dsonar.projectKey=service-app \
                     -Dsonar.sources=./src \
                     -Dsonar.host.url=http://localhost:9000 \
-                    -Dsonar.login=$SONAR_TOKEN
+                    -Dsonar.login=$SONAR_TOKEN \
+                    -Dsonar.qualitygate.wait=true
                 """
             }
         }
