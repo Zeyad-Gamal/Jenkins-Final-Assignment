@@ -200,15 +200,21 @@ pipeline {
 // }
 
 
-                stage('Trivy Image Scan') {
+//                 stage('Trivy Image Scan') {
+//     steps {
+//         sh """
+//             trivy image \
+//               --exit-code 1 \
+//               --severity CRITICAL \
+//               --no-progress \
+//               ${IMAGE_TAG}
+//         """
+//     }
+// }
+
+        stage('Trivy Image Scan') {
     steps {
-        sh """
-            trivy image \
-              --exit-code 1 \
-              --severity CRITICAL \
-              --no-progress \
-              ${IMAGE_TAG}
-        """
+        sh 'trivy fs --exit-code 1 --severity CRITICAL .'
     }
 }
 
