@@ -235,6 +235,19 @@ pipeline {
             }
         }
 
+        stage('Deploy') {
+    steps {
+        sh """
+            docker stop app || true
+            docker rm app || true
+            docker run -d \
+              --name app \
+              -p 8081:8080 \
+              ${IMAGE_TAG}
+        """
+    }
+}
+
         stage('Run Unit Tests') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
@@ -251,16 +264,21 @@ pipeline {
     }
 
     post {
-        always {
-            echo 'Pipeline finished.'
-        }
+        aalways {
+        echo 'Pipeline finished.'
 
-        success {
-            echo 'All stages completed successfully.'
-        }
+        sh """
+            docker rmi ${IMAGE_TAG} || true
+            docker image prune -f
+        """
+    }
 
-        failure {
-            echo 'Pipeline failed. Check logs.'
-        }
+    success {
+        echo 'All stages completed successfully.'
+    }
+
+    failure {
+        echo 'Pipeline failed. Check logs.'
+    }
     }
 }
