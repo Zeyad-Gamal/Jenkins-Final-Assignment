@@ -1,12 +1,3 @@
-# FROM php:8.2-cli
-
-# WORKDIR /app
-
-# COPY . .
-
-# CMD ["php", "./src/index.php"]
-
-
 FROM php:8.2-cli
 
 WORKDIR /app
