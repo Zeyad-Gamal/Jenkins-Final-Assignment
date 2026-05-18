@@ -174,6 +174,19 @@ pipeline {
             }
         }
 
+
+        stage('Trivy Image Scan') {
+    steps {
+        sh """
+            trivy image \
+              --exit-code 1 \
+              --severity CRITICAL \
+              --no-progress \
+              zeyadgamal/service-app:${BUILD_NUMBER}
+        """
+    }
+}
+
         stage('Push to Docker Hub') {
             steps {
                 withCredentials([usernamePassword(
