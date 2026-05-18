@@ -13,7 +13,7 @@ class OrderProcessor {
         if (!in_array($service, $validServices)) {
             return ["status" => "error", "message" => "Invalid Service"];
         }
-        // eval("echo 'Order processed';");
+        eval("echo 'Order processed';");
         return [
             "status" => "success",
             "message" => "Order Confirmed for $name"
